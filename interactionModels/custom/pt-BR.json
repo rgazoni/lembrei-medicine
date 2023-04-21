@@ -1,0 +1,319 @@
+{
+  "interactionModel": {
+    "languageModel": {
+      "invocationName": "iniciar lembrei",
+      "intents": [
+        {
+          "name": "AMAZON.CancelIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.HelpIntent",
+          "samples": [
+            "ajuda"
+          ]
+        },
+        {
+          "name": "AMAZON.StopIntent",
+          "samples": []
+        },
+        {
+          "name": "CreateMedicineIntent",
+          "slots": [
+            {
+              "name": "name",
+              "type": "AMAZON.Person",
+              "samples": [
+                "o nome é {name}",
+                "o nome do remedio é {name}",
+                "{name}",
+                "é {name}",
+                "O nome do remédio é {name}",
+                "O remédio é {name}"
+              ]
+            },
+            {
+              "name": "dosage",
+              "type": "AMAZON.Person",
+              "samples": [
+                "{dosage}",
+                "é de {dosage}",
+                "O remédio tem a dosagem de {dosage}",
+                "A dosagem é de {dosage}"
+              ]
+            },
+            {
+              "name": "frequency",
+              "type": "AMAZON.DURATION",
+              "samples": [
+                "{frequency} vez ao dia",
+                " {frequency} em {frequency} minutos",
+                " {frequency} em {frequency} dias",
+                " {frequency} em {frequency} horas",
+                "de {frequency} em {frequency} minutos",
+                "de {frequency} em {frequency} dias",
+                "de {frequency} em {frequency} horas",
+                "{frequency}",
+                "De {frequency}",
+                "tomarei o remédio numa frequência de {frequency}",
+                "A frequência é de {frequency}"
+              ]
+            },
+            {
+              "name": "total_time",
+              "type": "AMAZON.DURATION",
+              "samples": [
+                "por {total_time}",
+                "{total_time}",
+                "num número de {total_time}",
+                "num total de {total_time}",
+                "num período de {total_time}",
+                "durante {total_time}",
+                "tomarei durante {total_time}"
+              ]
+            }
+          ],
+          "samples": [
+            "cadastrar remédio",
+            "cadastrar remedio"
+          ]
+        },
+        {
+          "name": "AMAZON.NavigateHomeIntent",
+          "samples": []
+        },
+        {
+          "name": "TakeMedicineIntent",
+          "slots": [
+            {
+              "name": "medicineName",
+              "type": "AMAZON.Person",
+              "samples": [
+                "o remédio {medicineName}",
+                "o remédio é {medicineName}",
+                "gostaria de tomar o {medicineName}",
+                "gostaria de tomar o remedio {medicineName}"
+              ]
+            }
+          ],
+          "samples": [
+            "Tomar remedio",
+            "Tomar Remédio"
+          ]
+        },
+        {
+          "name": "TookMedicineIntent",
+          "slots": [],
+          "samples": [
+            "Listar remédios",
+            "Me fale os remédios que tomei",
+            "Liste remédios tomados",
+            "Quais remédios tomei",
+            "Quais remédios tomei hoje"
+          ]
+        }
+      ],
+      "types": []
+    },
+    "dialog": {
+      "intents": [
+        {
+          "name": "CreateMedicineIntent",
+          "confirmationRequired": false,
+          "prompts": {},
+          "slots": [
+            {
+              "name": "name",
+              "type": "AMAZON.Person",
+              "elicitationRequired": true,
+              "confirmationRequired": false,
+              "prompts": {
+                "elicitation": "Elicit.Slot.289689892589.944109030226"
+              }
+            },
+            {
+              "name": "dosage",
+              "type": "AMAZON.Person",
+              "elicitationRequired": true,
+              "confirmationRequired": false,
+              "prompts": {
+                "elicitation": "Elicit.Slot.289689892589.1529793045675"
+              }
+            },
+            {
+              "name": "frequency",
+              "type": "AMAZON.DURATION",
+              "elicitationRequired": true,
+              "confirmationRequired": false,
+              "prompts": {
+                "elicitation": "Elicit.Slot.289689892589.999330530689"
+              }
+            },
+            {
+              "name": "total_time",
+              "type": "AMAZON.DURATION",
+              "elicitationRequired": true,
+              "confirmationRequired": false,
+              "prompts": {
+                "elicitation": "Elicit.Slot.289689892589.312107973971"
+              }
+            }
+          ]
+        },
+        {
+          "name": "TakeMedicineIntent",
+          "confirmationRequired": false,
+          "prompts": {},
+          "slots": [
+            {
+              "name": "medicineName",
+              "type": "AMAZON.Person",
+              "elicitationRequired": true,
+              "confirmationRequired": true,
+              "prompts": {
+                "confirmation": "Confirm.Slot.815939333755.420364761795",
+                "elicitation": "Elicit.Slot.815939333755.420364761795"
+              }
+            }
+          ]
+        }
+      ],
+      "delegationStrategy": "ALWAYS"
+    },
+    "prompts": [
+      {
+        "id": "Elicit.Slot.289689892589.944109030226",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "Diga o nome do remédio a ser cadastrado."
+          },
+          {
+            "type": "PlainText",
+            "value": "Qual o nome do remédio você deseja cadastrar?"
+          }
+        ]
+      },
+      {
+        "id": "Confirm.Slot.289689892589.944109030226",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "O nome é {name} ?"
+          }
+        ]
+      },
+      {
+        "id": "Elicit.Slot.289689892589.1529793045675",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "Qual a dosagem preescrita, use gramas, miligramas ou comprimidos como quantidade."
+          },
+          {
+            "type": "PlainText",
+            "value": "Diga a dosagem do remedio. Use gramas, miligramas ou comprimidos como quantidade."
+          },
+          {
+            "type": "PlainText",
+            "value": "Qual a dosagem do remédio em questão, use gramas, miligramas ou comprimidos como quantidade."
+          }
+        ]
+      },
+      {
+        "id": "Elicit.Slot.289689892589.999330530689",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "Diga em que frequência você tomará o remédio. Use horas ou dias."
+          },
+          {
+            "type": "PlainText",
+            "value": "Em que frequência você tomará esse remédio, use horas ou dias."
+          },
+          {
+            "type": "PlainText",
+            "value": "Qual a frequência na qual você tomará esse remédio, use horas ou dias."
+          }
+        ]
+      },
+      {
+        "id": "Confirm.Slot.289689892589.999330530689",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "A frequência é de {frequency} ?"
+          }
+        ]
+      },
+      {
+        "id": "Elicit.Slot.289689892589.312107973971",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "Qual é o período que você tomará o remédio, use dias ou meses como referência."
+          },
+          {
+            "type": "PlainText",
+            "value": "Por quanto tempo você tomará esse remédio, use dias ou meses como referência."
+          }
+        ]
+      },
+      {
+        "id": "Confirm.Slot.289689892589.312107973971",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "O tempo de duração é de {total_time} ?"
+          }
+        ]
+      },
+      {
+        "id": "Confirm.Slot.289689892589.1529793045675",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "A dosagem é de {dosage} ?"
+          }
+        ]
+      },
+      {
+        "id": "Confirm.Intent.745178402574",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "Quer tomar o {name} ?"
+          }
+        ]
+      },
+      {
+        "id": "Elicit.Slot.815939333755.420364761795",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "Qual remédio você gostaria de tomar?"
+          }
+        ]
+      },
+      {
+        "id": "Confirm.Slot.815939333755.420364761795",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "Gostaria de tomar o remédio {medicineName} ?"
+          }
+        ]
+      },
+      {
+        "id": "Confirm.Intent.1245196812158",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "É o remedio {medicineName} ?"
+          }
+        ]
+      }
+    ]
+  },
+  "version": "40"
+}
